@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:maps="http://schemas.haulmont.com/maps/0.1/ui-component.xsd"
+        caption="msg://localizacionEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.teb12.web.screens.localizacion">
+    <data>
+        <instance id="localizacionDc"
+                  class="com.company.teb12.entity.Localizacion">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="localizacionDc">
+            <column width="350px">
+                <textField id="nombreField" property="nombre"/>
+                <textField id="codigoField" property="codigo"/>
+                <textField id="municipioField" property="municipio"/>
+                <textField id="coloniaField" property="colonia"/>
+                <textField id="calleField" property="calle"/>
+                <textField id="numeroField" property="numero"/>
+            </column>
+        </form>
+
+        <maps:geoMap width="800" height="400" center="-101.35, 20.68" zoom="12">
+            <maps:layers selectedLayer="localizacionLayer">
+                <maps:tile id="titleLayer" tileProvider="maps_OpenStreetMap"/>
+                <maps:vector id="localizacionLayer" dataContainer="localizacionDc" editable="true"/>
+            </maps:layers>
+        </maps:geoMap>
+
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

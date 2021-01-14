@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://localizacionBrowse.caption"
+        focusComponent="localizacionsTable"
+        messagesPack="com.company.teb12.web.screens.localizacion">
+    <data readOnly="true">
+        <collection id="localizacionsDc"
+                    class="com.company.teb12.entity.Localizacion">
+            <view extends="_local"/>
+            <loader id="localizacionsDl">
+                <query>
+                    <![CDATA[select e from teb12_Localizacion e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="localizacionsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="localizacionsTable"
+                dataLoader="localizacionsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="localizacionsTable"
+                    width="100%"
+                    dataContainer="localizacionsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="nombre"/>
+                <column id="codigo"/>
+                <column id="municipio"/>
+                <column id="colonia"/>
+                <column id="calle"/>
+                <column id="numero"/>
+                <column id="localizacion"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="localizacionsTable.create"/>
+                <button id="editBtn" action="localizacionsTable.edit"/>
+                <button id="removeBtn" action="localizacionsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

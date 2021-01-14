@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        caption="msg://unidadEdit.caption"
+        focusComponent="form"
+        messagesPack="com.company.teb12.web.screens.unidad">
+    <data>
+        <instance id="unidadDc"
+                  class="com.company.teb12.entity.Unidad">
+            <view extends="_local"/>
+            <loader/>
+        </instance>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="editActions" spacing="true">
+        <form id="form" dataContainer="unidadDc">
+            <column width="350px">
+                <textField id="unidadField" property="unidad"/>
+                <textField id="matriculaField" property="matricula"/>
+                <textField id="tipoField" property="tipo"/>
+            </column>
+        </form>
+        <hbox id="editActions" spacing="true">
+            <button id="commitAndCloseBtn" action="windowCommitAndClose"/>
+            <button id="closeBtn" action="windowClose"/>
+        </hbox>
+    </layout>
+</window>

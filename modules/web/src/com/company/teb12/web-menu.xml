@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<menu-config xmlns="http://schemas.haulmont.com/cuba/menu.xsd">
+    <menu id="application-teb12" insertBefore="administration" caption="mainMsg://menu_config.application-teb12">
+        <item screen="teb12_Unidad.browse" caption="mainMsg://menu_config.teb12_Unidad.browse"/>
+        <item screen="teb12_Operador.browse" caption="mainMsg://menu_config.teb12_Operador.browse"/>
+        <item screen="teb12_UnidadOperador.browse" caption="mainMsg://menu_config.teb12_UnidadOperador.browse"/>
+        <item screen="teb12_Localizacion.browse" caption="mainMsg://menu_config.teb12_Localizacion.browse"/>
+        <item screen="teb12_Ruta.browse" caption="mainMsg://menu_config.teb12_Ruta.browse"/>
+        <item screen="teb12_Roster.browse" caption="mainMsg://menu_config.teb12_Roster.browse"/>
+    </menu>
+</menu-config>

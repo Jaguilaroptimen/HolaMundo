@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://rosterBrowse.caption"
+        focusComponent="rostersTable"
+        messagesPack="com.company.teb12.web.screens.roster">
+    <data readOnly="true">
+        <collection id="rostersDc"
+                    class="com.company.teb12.entity.Roster">
+            <view extends="_local">
+                <property name="operador" view="_minimal"/>
+                <property name="ruta" view="_minimal"/>
+            </view>
+            <loader id="rostersDl">
+                <query>
+                    <![CDATA[select e from teb12_Roster e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="rostersTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="rostersTable"
+                dataLoader="rostersDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="rostersTable"
+                    width="100%"
+                    dataContainer="rostersDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="operador"/>
+                <column id="ruta"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="rostersTable.create"/>
+                <button id="editBtn" action="rostersTable.edit"/>
+                <button id="removeBtn" action="rostersTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>

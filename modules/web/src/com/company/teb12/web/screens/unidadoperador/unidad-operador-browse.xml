@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<window xmlns="http://schemas.haulmont.com/cuba/screen/window.xsd"
+        xmlns:c="http://schemas.haulmont.com/cuba/screen/jpql_condition.xsd"
+        caption="msg://unidadOperadorBrowse.caption"
+        focusComponent="unidadOperadorsTable"
+        messagesPack="com.company.teb12.web.screens.unidadoperador">
+    <data readOnly="true">
+        <collection id="unidadOperadorsDc"
+                    class="com.company.teb12.entity.UnidadOperador">
+            <view extends="_local">
+                <property name="operador" view="_minimal"/>
+                <property name="unidad" view="_minimal"/>
+            </view>
+            <loader id="unidadOperadorsDl">
+                <query>
+                    <![CDATA[select e from teb12_UnidadOperador e]]>
+                </query>
+            </loader>
+        </collection>
+    </data>
+    <dialogMode height="600"
+                width="800"/>
+    <layout expand="unidadOperadorsTable"
+            spacing="true">
+        <filter id="filter"
+                applyTo="unidadOperadorsTable"
+                dataLoader="unidadOperadorsDl">
+            <properties include=".*"/>
+        </filter>
+        <groupTable id="unidadOperadorsTable"
+                    width="100%"
+                    dataContainer="unidadOperadorsDc">
+            <actions>
+                <action id="create" type="create"/>
+                <action id="edit" type="edit"/>
+                <action id="remove" type="remove"/>
+            </actions>
+            <columns>
+                <column id="operador"/>
+                <column id="unidad"/>
+            </columns>
+            <rowsCount/>
+            <buttonsPanel id="buttonsPanel"
+                          alwaysVisible="true">
+                <button id="createBtn" action="unidadOperadorsTable.create"/>
+                <button id="editBtn" action="unidadOperadorsTable.edit"/>
+                <button id="removeBtn" action="unidadOperadorsTable.remove"/>
+            </buttonsPanel>
+        </groupTable>
+        <hbox id="lookupActions" spacing="true" visible="false">
+            <button action="lookupSelectAction"/>
+            <button action="lookupCancelAction"/>
+        </hbox>
+    </layout>
+</window>
